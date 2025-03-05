@@ -16,6 +16,12 @@ defmodule IntranetPhoenixProjectWeb.Router do
 
   scope "/", IntranetPhoenixProjectWeb do
     pipe_through :browser
+    live "/intranet_conversations", IntranetConversationLive.Index, :index
+    live "/intranet_conversations/new", IntranetConversationLive.Index, :new
+    live "/intranet_conversations/:id/edit", IntranetConversationLive.Index, :edit
+
+    live "/intranet_conversations/:id", IntranetConversationLive.Show, :show
+    live "/intranet_conversations/:id/show/edit", IntranetConversationLive.Show, :edit
 
     get "/", PageController, :home
   end
