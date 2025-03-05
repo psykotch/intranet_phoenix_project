@@ -1,0 +1,28 @@
+<.header>
+  Intranet conversation {@intranet_conversation.id}
+  <:subtitle>This is a intranet_conversation record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/intranet_conversations/#{@intranet_conversation}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit intranet_conversation</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Type">{@intranet_conversation.type}</:item>
+  <:item title="Status">{@intranet_conversation.status}</:item>
+  <:item title="Topic">{@intranet_conversation.topic}</:item>
+</.list>
+
+<.back navigate={~p"/intranet_conversations"}>Back to intranet_conversations</.back>
+
+<.modal :if={@live_action == :edit} id="intranet_conversation-modal" show on_cancel={JS.patch(~p"/intranet_conversations/#{@intranet_conversation}")}>
+  <.live_component
+    module={IntranetPhoenixProjectWeb.IntranetConversationLive.FormComponent}
+    id={@intranet_conversation.id}
+    title={@page_title}
+    action={@live_action}
+    intranet_conversation={@intranet_conversation}
+    patch={~p"/intranet_conversations/#{@intranet_conversation}"}
+  />
+</.modal>
