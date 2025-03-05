@@ -4,7 +4,7 @@ defmodule IntranetPhoenixProject.Repo.Migrations.CreateIntranetMessages do
   def change do
     create table(:intranet_messages) do
       add :body, :string
-      add :conversation_id, references(:intranet_conversation, on_delete: :nothing)
+      add :conversation_id, references(:intranet_conversations, on_delete: :nothing)
 
       timestamps(type: :utc_datetime)
     end

@@ -6,7 +6,7 @@ defmodule IntranetPhoenixProjectWeb.IntranetConversationLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :intranet_conversations, Chats.list_intranet_conversations())}
+    {:ok, stream(socket |> assign(:salutation, "coucou") |> assign(:message, "c'est moi"), :intranet_conversations, Chats.list_intranet_conversations())}
   end
 
   @impl true

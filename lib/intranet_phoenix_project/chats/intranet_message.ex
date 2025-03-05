@@ -1,4 +1,7 @@
 defmodule IntranetPhoenixProject.Chats.IntranetMessage do
+  @moduledoc """
+    messages
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
